@@ -11,7 +11,7 @@ import {
 } from './styles';
 import Background from '~/components/Background';
 
-export default function Signin() {
+export default function Signin({navigation}) {
   return (
     <Background>
       <Container>
@@ -32,7 +32,10 @@ export default function Signin() {
           />
         </Form>
         <SubmiButton onPress={() => {}}>Entrar</SubmiButton>
-        <SignLink onPress={() => {}}>
+        <SignLink
+          onPress={() => {
+            navigation.navigate('Signup');
+          }}>
           <SignLinkText>Criar conta gratuita</SignLinkText>
         </SignLink>
       </Container>
