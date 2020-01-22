@@ -10,6 +10,7 @@ module.exports = {
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
+    __DEV__,
   },
   parserOptions: {
     ecmaFeatures: {
@@ -23,17 +24,18 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    'prettier/prettier':'error', // caso não seja encontrada nenhuma regra o prettier mostrará erro
+    'prettier/prettier':'error', 
     'react/jsx-filename-extension':[
       'warn', {extensions: ['.jsx', '.js']}
-    ], //faz com que que seja permitido tb criação de codigo jsx  em arquivos .js e não apenas jsx
-    'import/prefer-default-export':'off', //desobriga usar o export default nos arquivos que tema apenas ume export
+    ], 
+    'import/prefer-default-export':'off',
     'jsx-a11y/control-has-associated-label':[0],
     'react/state-in-constructor': [0, 'disabled'],
     'no-console': ["error", {allow: ["tron"]}],
     'no-param-reassign': 'off',
     'import/no-unresolved': ['off'],
-    "import/extensions": ['off']
+    "import/extensions": ['off'],
+    "react/jsx-props-no-spreading": ['off'],
   },
   settings: {
     'import/resolver': 
