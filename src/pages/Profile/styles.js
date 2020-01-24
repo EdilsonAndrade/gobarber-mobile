@@ -31,6 +31,11 @@ export const FormInput = styled(Input)`
 export const SubmiButton = styled(Button)`
   margin-top: 15px;
 `;
+export const ExitButton = styled(Button)`
+  margin-top: 5px;
+  background:#fe0000;
+`;
+
 
 export const Separator = styled.View`
   height: 1px;

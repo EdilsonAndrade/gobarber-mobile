@@ -7,6 +7,7 @@ import {
   Form,
   FormInput,
   SubmiButton,
+  ExitButton,
   Separator
 } from './styles';
 import Background from '~/components/Background'
@@ -96,7 +97,7 @@ function handleLogout(){
           />
 
           <SubmiButton onPress={handleSubmit} loading={loading}>Atualizar perfil</SubmiButton>
-          <SubmiButton onPress={handleLogout} loading={loading}>Sair</SubmiButton>
+          <ExitButton onPress={handleLogout} loading={loading}>Sair do Gobarber</ExitButton>
         </Form>
       </Container>
     </Background>

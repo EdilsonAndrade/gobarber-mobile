@@ -6,6 +6,7 @@ import './config/ReactotronConfig';
 import 'react-native-gesture-handler';
 import {store, persistor} from './store';
 import App from './App'
+
 const Index = () => {
   return (
     <Provider store={store}>

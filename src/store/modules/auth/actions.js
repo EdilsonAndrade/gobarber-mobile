@@ -4,7 +4,11 @@ export const signinRequest = (email, password) =>{
     payload:{ email, password}
   }
 }
-
+export const signinEnter =() =>{
+  return {
+    type: '@auth/SIGNIN_ENTER'
+  }
+}
 export const signinSuccess = (token, user) =>{
   return {
     type: '@auth/SIGNIN_SUCCESS',
@@ -16,6 +20,12 @@ export const signupRequest = (name, email, password) =>{
   return {
     type: '@auth/SIGNUP_REQUEST',
     payload: {name, email, password}
+  }
+}
+export const signupSuccess = () =>{
+  return {
+    type: '@auth/SIGNUP_SUCCESS',
+    
   }
 }
 export const signinFailure = () =>{

@@ -1,8 +1,8 @@
 import {Alert} from 'react-native';
 import { takeLatest, put, call, all } from 'redux-saga/effects';
 import api from '~/services/api';
-//import history from '~/services/history';
-import { signinSuccess, signinFailure } from './actions'
+// import history from '~/services/history';
+import { signinSuccess, signinFailure, signupSuccess } from './actions'
 
 export function* signin({ payload }) {
   try {
@@ -41,9 +41,9 @@ export function* signUp({ payload }) {
       password,
     })
 
-    //history.push('/');
+    yield put(signupSuccess());
   } catch (error) {
-    Alert.alert('Erro no login','Usuário ou senha inválidos');
+    Alert.alert('Erro no cadastro','Tente novamente');
     yield put(signinFailure());
   }
 }
@@ -55,7 +55,7 @@ export function setToken({payload}) {
 }
 
 export function signOut(){
-  //history.push('/');
+  // history.push('/');
 }
 export default all(
   [

@@ -1,9 +1,10 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {Image} from 'react-native';
+import { withNavigationFocus } from 'react-navigation';
+import { Image } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '~/assets/logo.png';
-import {useDispatch, useSelector} from 'react-redux';
-import {signinRequest} from '~/store/modules/auth/actions'
+import { signinRequest, signinEnter } from '~/store/modules/auth/actions'
 
 import {
   Container,
@@ -15,15 +16,21 @@ import {
 } from './styles';
 import Background from '~/components/Background';
 
-export default function Signin({navigation}) {
+function Signin({ navigation, isFocused }) {
   const refPassword = useRef();
   const [email, setEmail] = useState('');
-  const [password,setPassword] = useState('');
-  const dispatch =useDispatch();
- const loading = useSelector(state=>state.auth.loading);
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
   function handleSubmit() {
     dispatch(signinRequest(email, password));
   }
+
+  useEffect(() => {
+    if (isFocused) {
+      dispatch(signinEnter());
+    }
+  },[isFocused])
   return (
     <Background>
       <Container>
@@ -64,3 +71,4 @@ export default function Signin({navigation}) {
 Signin.propTypes = {
   navigation: PropTypes.shape().isRequired,
 };
+export default withNavigationFocus(Signin);

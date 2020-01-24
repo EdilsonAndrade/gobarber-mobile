@@ -1,8 +1,8 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
-import {signupRequest} from '~/store/modules/auth/actions'
 import {Image} from 'react-native';
+import {signupRequest} from '~/store/modules/auth/actions'
 import logo from '~/assets/logo.png';
 import {
   Container,
@@ -22,10 +22,19 @@ export default function Signup({navigation}) {
   const [password,setPassword] = useState('');
   const dispatch =useDispatch();
   const loading = useSelector(state=>state.auth.loading);
-  
- function handleSubmit() {
+  const successSignup = useSelector(state=>state.auth.successSignup)
+ 
+ 
+  useEffect(()=>{
+    if(successSignup){
+      navigation.navigate('Signin')
+    }
+  }, [successSignup])
+  function handleSubmit() {
     dispatch(signupRequest(name, email, password));
   }
+
+
   return (
     <Background>
       <Container>
